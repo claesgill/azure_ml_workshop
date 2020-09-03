@@ -144,13 +144,13 @@ When you are finished with the workshop it is important that you shut down all c
 1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab choose your compute instanse and click **Stop** to shut it down.
 2. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute clusters** tab choose your compute instanse and click **Stop** to shut it down.
 
-Lastly we will thank you for your participation and if you had problems following this workshop or have suggestion for a change please file a [issue](/issue).
+Lastly we will thank you for your participation and if you had problems following this workshop or have suggestion for a change please file a [issue](https://github.com/claesgill/azure_ml_workshop/issues).
 
 ## Disclaimer
 This repo is heavily based of, and a very compressed version of @shoresh57's [AI-ML-Workshop-Azure](https://github.com/shoresh57/AI-ML-Workshop-Azure/) repository. If you want a deeper dive into Azure ML I suggest you check out his repository that contains very thorough tutorials.
 
 ## TODO
-* [x] Please file a [issue](#issues) if you had problems following this workshop or have suggestion for change
+* [x] Please file a issue if you had problems following this workshop or have suggestion for change
 * [x] Fill in Creatin pipeline
 * [x] Fill in Train from local machine
 * [x] Notebook for Pipeline
