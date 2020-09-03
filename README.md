@@ -13,6 +13,7 @@
     2. [Creating a pipeline](#creating-a-pipeline)
 6. [Train from local machine](#train-from-local-machine)
 7. [Clean up](#clean-up)
+8. [Disclaimer](#disclaimer)
 
 ## Getting started
 1. Login to the [Azure Portal](https://portal.azure.com/)
@@ -145,6 +146,9 @@ When you are finished with the workshop it is important that you shut down all c
 
 Lastly we will thank you for your participation and if you had problems following this workshop or have suggestion for a change please file a [issue](/issue).
 
+## Disclaimer
+This repo is heavily based of, and a very compressed version of @shoresh57's [AI-ML-Workshop-Azure](https://github.com/shoresh57/AI-ML-Workshop-Azure/) repository. If you want a deeper dive into Azure ML I suggest you check out his repository that contains very thorough tutorials.
+
 ## TODO
 * [x] Please file a [issue](#issues) if you had problems following this workshop or have suggestion for change
 * [x] Fill in Creatin pipeline
@@ -152,7 +156,8 @@ Lastly we will thank you for your participation and if you had problems followin
 * [x] Notebook for Pipeline
 * [x] Notebook for Train and register models
 * [x] Need to mention that compute instance and cluster must be shut down after usage.
-* [x] It might be that users need to click their name and clone repo into their namespace
+* [x] It might be that users need to click their name and clone repo into their namespace
+* [x] Add Disclaimer
 * [ ] Include checkout experiments tab while waiting for experiments and after
 * [ ] Fill in Train from local machine? Download repo, and install requirements then run files. This is to show that you can work from local computer also.  
 * [ ] Script that get the dataset?
