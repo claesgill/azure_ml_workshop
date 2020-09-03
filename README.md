@@ -59,7 +59,7 @@ You may see some warnings as the package dependencies are installed, but you can
 
 5. Next, run the following commands to change the current directory to the Users directory, and retrieve the notebooks you will use in the workshop:
 ```sh
-cd Users
+cd Users/<your name> # i.e cd Users/Jon.Doe/
 git clone https://github.com/claesgill/azure_ml_workshop
 ```
 6. After the command has completed, close the terminal tab and view the home page in your Jupyter notebook file explorer. Then open the `Users` folder and go to the `azure_ml_workshop` folder. Here you should have everything you need to continue this workshop.
@@ -152,6 +152,7 @@ Lastly we will thank you for your participation and if you had problems followin
 * [x] Notebook for Pipeline
 * [x] Notebook for Train and register models
 * [x] Need to mention that compute instance and cluster must be shut down after usage.
+* [x] It might be that users need to click their name and clone repo into their namespace
 * [ ] Include checkout experiments tab while waiting for experiments and after
 * [ ] Fill in Train from local machine? Download repo, and install requirements then run files. This is to show that you can work from local computer also.  
 * [ ] Script that get the dataset?
