@@ -9,7 +9,7 @@
     1. [Creating a dataset](#creating-a-dataset)
 4. [Train and register models](#train-and-register-models)
 5. [Pipeline](#pipeline)
-    1.  [Why build pipelines?](#why-build-pipelines?)
+    1.  [Why build pipelines?](#why-build-pipelines)
     2. [Creating a pipeline](#creating-a-pipeline)
 6. [Train from local machine](#train-from-local-machine)
 7. [Clean up](#clean-up)
@@ -25,10 +25,10 @@
 
 Feel free to explore Azure ML Studio.
 
-> :information_source: If you are prompted to sign in on the way in this workshop, use your Microsoft account associated with your Azure subscription to sign back in.
+> :information_source: If you are prompted to sign in again in this workshop it just means that your token has expired and you just need to use your Microsoft account associated with your Azure subscription to sign back in.
 
 ## Compute instance
-**TODO: Explenation here**
+> :information_source: Compute instances is a managed cloud-based workstation used by data scientists.
 
 ![other_image](images/overview.png)
 
@@ -48,10 +48,10 @@ Feel free to explore Azure ML Studio.
 ### Testing and verifying compute instance
 > :information_source: In this workshop we are using python notebooks to run our code. To make notebooks available on our compute instance we need to clone this repository into it. We will also run some small test to check that everything works as expected.
 
-1. In [Azure Machine Learning studio](https://ml.azure.com/), on the **Compute** page for your workspace, view the **Compute instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in has started.
+1. In [Azure ML studio](https://ml.azure.com/), on the **Compute** page for your workspace, view the **Compute instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in has started.
 2. Click your compute instance's Jupyter link to open **Jupyter** Notebooks in a new tab.
 3. In the notebook environment, create a new **Terminal**. This will open a new tab with a command shell.
-4. The Azure Machine Learning SDK is already installed in the compute instance image, but it's worth ensuring you have the latest version, with the optional packages you'll need in this workshop. Enter the following command to update the SDK packages:
+4. The Azure ML SDK is already installed in the compute instance image, but it's worth ensuring you have the latest version, with the optional packages you'll need in this workshop. Enter the following command to update the SDK packages:
 ```sh
 pip install --upgrade azureml-sdk[notebooks,automl,explain]
 ```
@@ -67,8 +67,7 @@ git clone https://github.com/claesgill/azure_ml_workshop
 8. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
 
 ## Datasets
-> :information_source: Working with machine learning usually requires big chunks of data, and Azure ML provides multiple datastores for our usage. Your Azure ML workspace already includes two datastores based on the Azure Storage account that was created along with the workspace. These are used to store notebooks, configuration files and data. Where datasets represent specific data files or tables that you plan to work with in Azure ML.
-> In [Azure ML studio](https://ml.azure.com/), navigate to the **Datastores** page to see the available datastores.
+> :information_source: Working with machine learning usually requires big chunks of data, and Azure ML provides multiple datastores for our usage. Your Azure ML workspace already includes two datastores based on the Azure Storage account that was created along with the workspace. These are used to store notebooks, configuration files and data. Where datasets represent specific data files or tables that you plan to work with in Azure ML. In [Azure ML studio](https://ml.azure.com/), you can navigate to the **Datastores** page to see the available datastores.
 
 ### Creating a dataset
 1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Datasets** page.
@@ -94,7 +93,7 @@ git clone https://github.com/claesgill/azure_ml_workshop
 ~~4. Go and run notebook `2_fetch_dataset.ipynb` to see the data frames?~~
 
 ## Train and register models
-> :information_source: In this task, you'll use code in a notebook to run training scripts as Azure Machine Learning experiments.
+> :information_source: In this task, you're going to train and register a model to Azure using a notebook.
 
 1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab, verify that your compute instance is running.
 2. When the compute instance is running, click the *Jupyter* link to open the Jupyter home page in a new browser tab.
@@ -102,6 +101,7 @@ git clone https://github.com/claesgill/azure_ml_workshop
 4. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
 
 ## Pipeline
+> :information_source: If you are familiar with pipelines you can skip the [Why build pipelines?](#why-build-pipelines) section and go straight to [Creating a pipeline](#creating-a-pipeline).
 
 ### Why build pipelines?
 With pipelines, you can optimize your workflow with simplicity, speed, portability, and reuse. Breaking it down to independent steps allow multiple data scientists to work on the same pipeline at the same time.
@@ -121,9 +121,7 @@ A typical pipeline contains:
 * Deployment, including versioning, scaling, provisioning, and access control
 
 ### Creating a pipeline
-In this task, you'll create a pipeline to train and register a model.
-
-What we want to achieve in this is .... *TODO*
+> :information_source: In this task, you'll create a pipeline to train and register a model using a notebook.
 
 1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab, verify that your compute instance is running.
 2. When the compute instance is running, click the *Jupyter* link to open the Jupyter home page in a new browser tab.
@@ -140,7 +138,7 @@ pip3 install -r requirements.txt
 ```
 
 ## Clean up
-When you are finished with the workshop it is important that you shut down all compute instances and compute clusters since this is a pay-as-you-go service.
+When you are finished with the workshop it is important that you shut down all compute instances and compute clusters since this is a pay-as-you-go service :money_with_wings:
 
 1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab choose your compute instanse and click **Stop** to shut it down.
 2. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute clusters** tab choose your compute instanse and click **Stop** to shut it down.
