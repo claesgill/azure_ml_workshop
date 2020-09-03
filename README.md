@@ -33,7 +33,7 @@ Feel free to explore Azure ML Studio.
 ![other_image](images/overview.png)
 
 ### Create a compute instance
-1. In [Azure ML studio](https://ml.azure.com/), navigate to *Compute* and chose *Compute instances*. Then create a **new** compute instance.
+1. In [Azure ML studio](https://ml.azure.com/), navigate to **Compute** and chose **Compute instances**. Then create a **new** compute instance.
 2. Fill in the following:  
     * **Compute name**: <your_name>workshop
     * **Region**: westeurope 
@@ -48,7 +48,7 @@ Feel free to explore Azure ML Studio.
 ### Testing and verifying compute instance
 > :information_source: In this workshop we are using python notebooks to run our code. To make notebooks available on our compute instance we need to clone this repository into it. We will also run some small test to check that everything works as expected.
 
-1. In [Azure Machine Learning studio](https://ml.azure.com/), on the **Compute** page for your workspace, view the **Compute Instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in has started.
+1. In [Azure Machine Learning studio](https://ml.azure.com/), on the **Compute** page for your workspace, view the **Compute instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in has started.
 2. Click your compute instance's Jupyter link to open **Jupyter** Notebooks in a new tab.
 3. In the notebook environment, create a new **Terminal**. This will open a new tab with a command shell.
 4. The Azure Machine Learning SDK is already installed in the compute instance image, but it's worth ensuring you have the latest version, with the optional packages you'll need in this workshop. Enter the following command to update the SDK packages:
@@ -96,7 +96,7 @@ git clone https://github.com/claesgill/azure_ml_workshop
 ## Train and register models
 > :information_source: In this task, you'll use code in a notebook to run training scripts as Azure Machine Learning experiments.
 
-1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute Instances** tab, verify that your compute instance is running.
+1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab, verify that your compute instance is running.
 2. When the compute instance is running, click the *Jupyter* link to open the Jupyter home page in a new browser tab.
 3. In the Jupyter home page, go to the `Users/azure_ml_workshop` folder and open the `2_training_models.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn.
 4. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
@@ -125,7 +125,7 @@ In this task, you'll create a pipeline to train and register a model.
 
 What we want to achieve in this is .... *TODO*
 
-1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute Instances** tab, verify that your compute instance is running.
+1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab, verify that your compute instance is running.
 2. When the compute instance is running, click the *Jupyter* link to open the Jupyter home page in a new browser tab.
 3. In the Jupyter home page, go to the `Users/azure_ml_workshop` folder and open the `3_creating_pipeline.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn.
 4. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
@@ -142,7 +142,7 @@ pip3 install -r requirements.txt
 ## Clean up
 When you are finished with the workshop it is important that you shut down all compute instances and compute clusters since this is a pay-as-you-go service.
 
-1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute Instances** tab choose your compute instanse and click **Stop** to shut it down.
+1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab choose your compute instanse and click **Stop** to shut it down.
 2. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute clusters** tab choose your compute instanse and click **Stop** to shut it down.
 
 Lastly we will thank you for your participation and if you had problems following this workshop or have suggestion for a change please file a [issue](/issue).
