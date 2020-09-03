@@ -34,6 +34,8 @@ Feel free to explore Azure ML Studio.
 
 3. Make sure your information is correct before you click **create**.
 
+4. For the next steps see section [Clone repo into compute instance](#clone-repo-into-compute-instance).
+
 ### Clone repo into compute instance
 You can perform most asset management tasks to set up your environment in the Studio interface, but it's also important to be able to script configuration tasks to make them easier to repeat and automate.
 
@@ -56,7 +58,7 @@ You may see some warnings as the package dependencies are installed. You can ign
 
 ```sh
 cd Users
-git clone https://github.com/shoresh57/AI-ML-Workshop-Azure
+git clone https://github.com/claesgill/azure_ml_workshop
 ```
 
 6. After the command has completed, close the terminal tab and view the home page in your Jupyter notebook file explorer. Then open the Users folder - it should contain an AI-ML-Workshop-Azure folder, containing the files you will use in the rest of this lab.
