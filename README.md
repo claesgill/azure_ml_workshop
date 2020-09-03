@@ -45,8 +45,8 @@ Feel free to explore Azure ML Studio.
 3. Make sure your information is correct before you click **create**.
 4. For the next steps see section [Clone repo into compute instance](#clone-repo-into-compute-instance).
 
-### Clone repo into compute instance
-> :information_source: When we work with compute instances we need to make ..
+### Testing and verifying compute instance
+> :information_source: In this workshop we are using python notebooks to run our code. To make notebooks available on our compute instance we need to clone this repository into it. We will also run some small test to check that everything works as expected.
 
 1. In [Azure Machine Learning studio](https://ml.azure.com/), on the **Compute** page for your workspace, view the **Compute Instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in has started.
 2. Click your compute instance's Jupyter link to open **Jupyter** Notebooks in a new tab.
@@ -62,8 +62,8 @@ You may see some warnings as the package dependencies are installed, but you can
 cd Users
 git clone https://github.com/claesgill/azure_ml_workshop
 ```
-6. After the command has completed, close the terminal tab and view the home page in your Jupyter notebook file explorer. Then open the `Users` folder and go to `azure_ml_workshop` folder. Here you should have everything you need to continue this workshop.
-7. Open the `1_testing_workspace.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn. 
+6. After the command has completed, close the terminal tab and view the home page in your Jupyter notebook file explorer. Then open the `Users` folder and go to the `azure_ml_workshop` folder. Here you should have everything you need to continue this workshop.
+7. To check that everything works as expected, open the `1_testing_workspace.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn. 
 8. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
 
 ## Datasets
