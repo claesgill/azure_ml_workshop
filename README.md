@@ -23,9 +23,9 @@ To get started, follow the [Contents](#contents) chronologically and complete ea
 
 ## Getting started
 1. Login to the [Azure Portal](https://portal.azure.com/)
-2. Check that `AI Studentlab` is available in *Subscription*
-3. Go to *Resources* and choose `ml_aisl`
-4. Click **Launch Now** to go to Azure Machine Learning studio. Alternatively you can open [Azure Machine Learning studio](https://ml.azure.com), where you need to sign with the following selected:  
+2. Go to *Subscriptions* and verify that `AI Studentlab` is available. If not, untick the box **Show only subscriptions selected in the global subscriptions filter** or ask for help.
+3. Click the `AI Studentlab` subscription and go to *Resources* and click the `ml_aisl` resource.
+4. Then click **Launch Now** to go to Azure Machine Learning studio. Alternatively you can open [Azure Machine Learning studio](https://ml.azure.com), where you need to sign in with the following selected:  
     * **Directory**: Skatteetaten
     * **Subscription**: AI Studentlab
     * **Machine Learning workspace**: ml-aisl
@@ -46,7 +46,7 @@ Feel free to explore Azure ML Studio.
     * **Compute name**: <your_name>workshop
     * **Region**: westeurope 
     * **Virtual machine type**: CPU (Central Processing Unit)
-    * **Virtual machine size**: Standard D1
+    * **Virtual machine size**: Standard_D1
 
 > :warning: You need to provide the correct information otherwise you may encounter problems later in this workshop.
 
@@ -56,22 +56,22 @@ Feel free to explore Azure ML Studio.
 ### Testing and verifying compute instance
 > :information_source: In this workshop we are using python notebooks to run our code. To make notebooks available on our compute instance we need to clone this repository into it. We will also run some small test to check that everything works as expected.
 
-1. In [Azure ML studio](https://ml.azure.com/), on the **Compute** page for your workspace, view the **Compute instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in has started.
-2. Click your compute instance's Jupyter link to open **Jupyter** Notebooks in a new tab.
-3. In the notebook environment, create a new **Terminal**. This will open a new tab with a command shell.
+1. In [Azure ML studio](https://ml.azure.com/), on the **Compute** page for your workspace, view the **Compute instances** tab, and if necessary, click **Refresh** periodically until the compute instance you created in the previous step has started. This may take a couple of minutes so that might be a good time for a :coffee: break.
+2. Click your compute instance's Jupyter link to open **Jupyter** Notebooks in a new tab. You might see a warning pop-up where you need to click **Yes** to continue.
+3. In the notebook environment, upper right corner, create a **new** Terminal. This will open a new tab with a command shell.
 4. The Azure ML SDK is already installed in the compute instance image, but it's worth ensuring you have the latest version, with the optional packages you'll need in this workshop. Enter the following command to update the SDK packages:
 ```sh
 pip install --upgrade azureml-sdk[notebooks,automl,explain]
 ```
-You may see some warnings as the package dependencies are installed, but you can ignore these.
+You may see some warnings and errors as the package dependencies are installed, but you can ignore these.
 
 5. Next, run the following commands to change the current directory to the Users directory, and retrieve the notebooks you will use in the workshop:
 ```sh
 cd Users/<your name> # i.e cd Users/Jon.Doe/
 git clone https://github.com/claesgill/azure_ml_workshop
 ```
-6. After the command has completed, close the terminal tab and view the home page in your Jupyter notebook file explorer. Then open the `Users` folder and go to the `azure_ml_workshop` folder. Here you should have everything you need to continue this workshop.
-7. To check that everything works as expected, open the `1_testing_workspace.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn. 
+6. After the command has completed, close the terminal tab and view the home page in your Jupyter notebook file explorer. Then open the `Users/<your name>` folder and go to the `azure_ml_workshop` folder. Here you should have everything you need to continue this workshop.
+7. To check that everything works as expected, go to the `notebooks` folder and open the `1_testing_workspace.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn.
 8. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
 9. Now, you can create a dataset. See [Datasets](#datasets).
 
@@ -105,7 +105,7 @@ git clone https://github.com/claesgill/azure_ml_workshop
 
 1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab, verify that your compute instance is running.
 2. When the compute instance is running, click the *Jupyter* link to open the Jupyter home page in a new browser tab.
-3. In the Jupyter home page, go to the `Users/azure_ml_workshop` folder and open the `2_training_models.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn.
+3. In the Jupyter home page, go to the `Users/<your name>/azure_ml_workshop/notebooks` folder and open the `2_training_models.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn. You may see some warnings while running the cells, but these can be ignored.
 4. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
 5. Now it's time to learn about [Pipeline](#pipeline)s.
 
