@@ -3,7 +3,7 @@ In this workshop you are going to set up a [Compute instance](#compute-instance)
 
 To get started, follow the [Contents](#contents) chronologically and complete each step in the sections before you move on.
 
-> :information_source: If you want to take a longer break or you are finished with the workshop remember to visit the [Clean up](#clean-up) section.
+> :information_source: If you want to take a longer break or you are finished with the workshop remember to visit the [Clean up](#clean-up-coffee) section.
 
 ## Contents
 1. [Getting started](#getting_started)
@@ -17,7 +17,7 @@ To get started, follow the [Contents](#contents) chronologically and complete ea
     1.  [Why build pipelines?](#why-build-pipelines)
     2. [Creating a pipeline](#creating-a-pipeline)
 6. [Train from local machine](#train-from-local-machine)
-7. [Clean up](#clean-up)
+7. [Clean up](#clean-up-coffee)
 8. [Disclaimer](#disclaimer)
 
 ## Getting started
@@ -135,7 +135,7 @@ A typical pipeline contains:
 2. When the compute instance is running, click the *Jupyter* link to open the Jupyter home page in a new browser tab.
 3. In the Jupyter home page, go to the `Users/azure_ml_workshop` folder and open the `3_creating_pipeline.ipynb` notebook. Then read all the notes in the notebook, and run each code cell in turn.
 4. When you have finished running the code in the notebook, on the **File** menu, click **Close and Halt** to close it and shut down its Python kernel.
-5. If you have completed all sections and don't want to play around anymore visit the [Clean up](#clean-up) section.
+5. If you have completed all sections and don't want to play around anymore visit the [Clean up](#clean-up-coffee) section.
 
 ## Train from local machine
 *TODO*
