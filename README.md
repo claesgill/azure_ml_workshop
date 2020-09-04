@@ -18,6 +18,7 @@ To get started, follow the [Contents](#contents) chronologically and complete ea
     2. [Creating a pipeline](#creating-a-pipeline)
 6. [Train from local machine](#train-from-local-machine)
 7. [Clean up](#clean-up-coffee)
+9. [Issues](#issues)
 8. [Disclaimer](#disclaimer)
 
 ## Getting started
@@ -139,12 +140,6 @@ A typical pipeline contains:
 
 ## Train from local machine
 *TODO*
-### Requirements
-* Python v3.6.9 or higher
-* pip3
-```sh
-pip3 install -r requirements.txt
-```
 
 ## Clean up :coffee:
 If you want to take a longer break or you are finished with the workshop, it's important that you either *shut down* or *delete* your compute instance and cluster since this is a pay-as-you-go service :money_with_wings:
@@ -155,23 +150,11 @@ If you want to take a longer break or you are finished with the workshop, it's i
     * Alt 2: Click **Delete** to remove it.
 2. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute clusters** tab click your compute cluster.
     You can now choose one of the following options:  
-    * Alt 1: 
- choose the **Edit** tab and set **Minimum number of nodes** to 0.
+    * Alt 1: Choose the **Edit** tab and set **Minimum number of nodes** to 0. This will shut the cluster down.
+    * Alt 2: Click **Delete** to remove it.
 
-Lastly we will thank you for your participation and if you had problems following this workshop or have suggestion for a change please file a [issue](https://github.com/claesgill/azure_ml_workshop/issues).
+## Issues
+If you experience any problems following this workshop or have suggestion for a change, please file a [issue](https://github.com/claesgill/azure_ml_workshop/issues).
 
 ## Disclaimer
 This repo is heavily based of, and a very compressed version of @shoresh57's [AI-ML-Workshop-Azure](https://github.com/shoresh57/AI-ML-Workshop-Azure/) repository. If you want a deeper dive into Azure ML I suggest you check out his repository that contains very thorough tutorials.
-
-## TODO
-* [x] Please file a issue if you had problems following this workshop or have suggestion for change
-* [x] Fill in Creatin pipeline
-* [x] Fill in Train from local machine
-* [x] Notebook for Pipeline
-* [x] Notebook for Train and register models
-* [x] Need to mention that compute instance and cluster must be shut down after usage.
-* [x] It might be that users need to click their name and clone repo into their namespace
-* [x] Add Disclaimer
-* [ ] Include checkout experiments tab while waiting for experiments and after
-* [ ] Fill in Train from local machine? Download repo, and install requirements then run files. This is to show that you can work from local computer also.  
-* [ ] Script that get the dataset?
