@@ -139,7 +139,7 @@ A typical pipeline contains:
 5. If you have completed all sections and don't want to play around anymore visit the [Clean up](#clean-up-coffee) section.
 
 ## Train from local machine
-*TODO*
+Checkout the README inside the **local/** folder.
 
 ## Clean up :coffee:
 If you want to take a longer break or you are finished with the workshop, it's important that you either *shut down* or *delete* your compute instance and cluster since this is a pay-as-you-go service :money_with_wings:
