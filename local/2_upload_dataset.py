@@ -1,7 +1,6 @@
 # external imports
 import azureml.core
-from azureml.core import Workspace
-from azureml.core import ComputeTarget, Datastore, Dataset
+from azureml.core import Workspace, ComputeTarget, Datastore, Dataset
 # local imports
 from src.config import Config
 from src.colors import Colors
@@ -19,10 +18,10 @@ print(ws.datasets)
 # print(datastore)
 
 # Download dataset from Oslo Bysykkel
-bysykkel_url  = "https://data.urbansharing.com/oslobysykkel.no/trips/v1/2020/08.csv"
+bysykkel_url  = "data/shakespare.txt"
 bysykkel_data = Dataset.Tabular.from_delimited_files(bysykkel_url)
 bysykkel_data.register(workspace=ws,
-                       name="oslo_bysykkel",
+                       name="oslo_bysykkel_2",
                        description="Oslo Bysykkel data",
                        create_new_version=False)
 
