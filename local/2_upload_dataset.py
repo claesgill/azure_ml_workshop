@@ -1,34 +1,40 @@
 # external imports
 import azureml.core
 from azureml.core import Workspace, ComputeTarget, Datastore, Dataset
+import os
 # local imports
-from src.config import Config
-from src.colors import Colors
-config = Config()
-c = Colors()
+from src.config import Config; config = Config()
+from src.colors import Colors; c      = Colors()
 
 # Load the workspace 
 print("INFO: Loading workspace ...")
 ws = Workspace.get(config.workspace_name)
 print("{}Ready to use Azure ML '{}' to work with '{}'.{}".format(c.YELLOW, azureml.core.VERSION, ws.name, c.DEFAULT))
 
-# Check if dataset exists
-print(ws.datasets)
-# datastore = Datastore(workspace=ws, name="workspacefilestore")
-# print(datastore)
+dataset_name       = input("Enter your dataset name:\n")
+dataset_desciption = input("Enter dataset description:\n")
 
-# Download dataset from Oslo Bysykkel
-bysykkel_url  = "data/shakespare.txt"
-bysykkel_data = Dataset.Tabular.from_delimited_files(bysykkel_url)
-bysykkel_data.register(workspace=ws,
-                       name="oslo_bysykkel_2",
-                       description="Oslo Bysykkel data",
-                       create_new_version=False)
+if dataset_name not in ws.datasets.keys():
+    # TODO: Check if dataset exists
+    # TODO: Save metadata?
+    
+    print("Uploading '{}' ...".format(dataset_name))
+    try:
+        # Uploading and registering dataset
+        default_ds = ws.get_default_datastore()
+        default_ds.upload_files(files=['./data/shakespeare.txt'], # Upload the diabetes csv files in /data
+                                target_path='./',                 # Put it in a folder path in the datastore
+                                overwrite=True,                   # Replace existing files of the same name
+                                show_progress=True)
 
-# dummy = Dataset.File.from_files(path="data/dummy.csv")
-# print(dummy)
-# dataset = Dataset(definition="New dataset", workspace=ws)
-# print(dataset)
-# Create a dataset and save it
-
-# Upload our created dataset
+        shakespeare_data = Dataset.File.from_files(path=(default_ds, "./shakespeare.txt"))
+        shakespeare_data.register(workspace=ws,
+                            name=dataset_name,
+                            description=dataset_desciption,
+                            create_new_version=False)
+        print("{}Success uploading dataset: '{}'{}".format(c.GREEN, dataset_name, c.DEFAULT))
+    except Exception as e:
+        print("{}An error occured while uploading dataset: '{}'{}".format(c.RED, dataset_name, c.DEFAULT))
+        print(e)
+else:
+    print("{}Dataset '{}' already exists. Please provide another name.{}".format(c.RED, dataset_name, c.DEFAULT))

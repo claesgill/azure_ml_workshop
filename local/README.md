@@ -7,6 +7,8 @@ In this task you will learn how you can work with Azure ML from your local machi
 *TODO*
 
 ## Requirements
+> :information_source: It is recomended to use a virtual envrionment for python, but it is not required.
+
 Before you start you need to check that you have the correct python version and all the packages you need.  
 * Python v3.6.9 or higher
 * pip3
@@ -35,8 +37,21 @@ This script will output you *Azure ML version*, your *compute targets*, *datasto
 Now that you've verified the connection proceed to section [Upload dataset](#upload-dataset).
 
 ## Upload dataset
-In a section [Datasets]() you uploaded a dataset manually into the `ml-aisl` workspace. This section you'll show you how you can upload a dataset using the [Azure ML SDK]().
+In a section [Datasets]() you uploaded a dataset manually into the `ml-aisl` workspace. This section you'll show you how you can upload a dataset using the [Azure ML SDK](). You can have a look at the code in `2_upload_dataset.py` to see how it's done. Feel free to ask if you any questions!  
 
+To upload the dataset you need to run
+```sh
+python3 2_upload_dataset.py
+```
+in terminal.
+
+Running this script will prompt you to insert a **dataset name** and a **dataset description**. It is imporatant that you pick an easy but unique dataset name as you need to use it for later tasks. 
 
 ## Train a model
+To upload and train the model run
+```sh
+python3 deploy_to_azure.py
+```
+in terminal.
 
+Here you will need to provide the same **dataset name** that you specified before, and a name for your **experiment**.

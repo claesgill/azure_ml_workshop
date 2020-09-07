@@ -110,28 +110,27 @@ def generate(decoder, prime_str='A', predict_len=100, temperature=0.8, cuda=Fals
 
 # Parse command line arguments
 argparser = argparse.ArgumentParser()
-argparser.add_argument('filename', type=str)
-argparser.add_argument('--model', type=str, default="gru")
-argparser.add_argument('--n_epochs', type=int, default=10)
-argparser.add_argument('--print_every', type=int, default=100)
-argparser.add_argument('--hidden_size', type=int, default=100)
-argparser.add_argument('--n_layers', type=int, default=2)
+argparser.add_argument('--filename',      type=str, default='shakespeare.txt')
+argparser.add_argument('--model',         type=str, default='gru')
+argparser.add_argument('--n_epochs',      type=int, default=10)
+argparser.add_argument('--print_every',   type=int, default=100)
+argparser.add_argument('--hidden_size',   type=int, default=100)
+argparser.add_argument('--n_layers',      type=int, default=2)
 argparser.add_argument('--learning_rate', type=float, default=0.01)
-argparser.add_argument('--chunk_len', type=int, default=200)
-argparser.add_argument('--batch_size', type=int, default=100)
-argparser.add_argument('--shuffle', action='store_true')
-argparser.add_argument('--cuda', action='store_true')
+argparser.add_argument('--chunk_len',     type=int, default=200)
+argparser.add_argument('--batch_size',    type=int, default=100)
+argparser.add_argument('--shuffle',       action='store_true')
+argparser.add_argument('--cuda',          action='store_true')
 args = argparser.parse_args()
 
-if args.cuda:
-    print("Using CUDA")
+if args.cuda: print("Using CUDA")
 
-# TODO: Download dataset from azure
+# Get a dataset by name
+# Downloads dataset from azure
 ws = Workspace.get('ml-aisl')
-dataset = Dataset.get_by_name(ws, name=args.filename)
-dataset.download(target_path='.', overwrite=False)
-
-file, file_len = read_file(args.filename)
+dataset = Dataset.get_by_name(ws, name='shakespare_1')
+dataset.download(target_path='.', overwrite=True)
+file, file_len = read_file('shakespare.txt')
 
 def random_training_set(chunk_len, batch_size):
     inp = torch.LongTensor(batch_size, chunk_len)
@@ -169,8 +168,7 @@ def train(inp, target):
 def save():
     save_filename = os.path.splitext(os.path.basename(args.filename))[0] + '.pt'
     torch.save(decoder, save_filename)
-    print('Saved as %s' % save_filename)
-
+    print('Saved as {}'.format(save_filename))
 
 # Initialize models and start training
 decoder = CharRNN(
