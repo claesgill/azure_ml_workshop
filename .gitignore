@@ -1,2 +1,5 @@
 .idea/
 env/
+pytorch_env/
+local/src/__pycache__/
+local/.config/
