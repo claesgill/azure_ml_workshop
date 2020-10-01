@@ -47,56 +47,62 @@ This script will output your *Azure ML version*, *compute targets*, *datastores*
 Now that you've verified the connection proceed to section [Upload dataset](#upload-dataset).
 
 ## Create a config
-> :bulb: Look for **3** todos in `2_create_config`
-
-We need the [`Workspace`](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py#workspace) class to consume our workspace on Azure Cloud. 
-In the last section we used `Workspace.get()` method where we specified the `workspace_name` to get our workspace. Since we need to specify the workspace in each script, this becomes tedious over time. 
+We need the [`Workspace`](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py#workspace) class to consume our workspace on Azure Cloud. In the last section we used `Workspace.get()` method where we specified the `workspace_name` to get our workspace. Since we need to specify the workspace in each script, this becomes tedious over time. 
 So, a solution is to use the `from_config` method instead to load the workspace from a config file. But before you can use that method you need to create the config using the `write_config` method.
 
-Fill in the todos in `2_create_config`, and run your script to create the config:
+Fill in the todos in `2_create_config.py`, and run your script to create the config:
 ```sh
 python3 2_create_config.py
 ```
 
-To verify that your script works, you should be able to locate a `.azureml/` folder containing a `.config.json` file.
+If your script worked, you should be able to locate a `.azureml/` folder containing a `.config.json` file.
 
-#### Hints
+#### Hints :bulb:
+- Look for **3** todos.
 - Check out the documentation for the [Workspace class](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py#workspace). 
 
 
 ## Upload dataset
-> :bulb: Look for **XX** todos
+In section [Datasets](https://github.com/claesgill/azure_ml_workshop#datasets) you uploaded a dataset manually into your workspace. This section you'll learn how  you can upload a dataset using the [Azure ML SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py). 
 
-In a section [Datasets]() you uploaded a dataset manually into the `ml-aisl` workspace. This section you'll show you how you can upload a dataset using the [Azure ML SDK](). You can have a look at the code in `2_upload_dataset.py` to see how it's done. Feel free to ask if you have any questions!  
-
-To upload the dataset you need to run
+Fill in the todos in `3_upload_dataset.py`, and run your script:
 ```sh
-python3 2_upload_dataset.py
+python3 3_upload_dataset.py
 ```
-in terminal.
 
-Running this script will prompt you to insert a **dataset name** and a **dataset description**. It is imporatant that you pick an easy but unique dataset name as you need to use it for later tasks. 
+If you don't get any error messages you can go to your workspace at [https://ml.azure.com/](https://ml.azure.com/), and verify that your dataset exists in the **Datasets** tab under Assets.
+
+#### Hints :bulb:
+- Look for **2** todos.
+- Check out the documentation for [register datasets](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-register-datasets#register-datasets).
 
 ## Train a model
-> :bulb: Look for **XX** todos
-
-To upload and train the model run
+To upload and train the model run:
 ```sh
-python3 deploy_to_azure.py
+python3 4_deploy_to_azure.py
 ```
-in terminal.
 
 Here you will need to provide the same **dataset name** that you specified before, and a name for your **experiment**.
 
+#### Hints :bulb:
+- Look for **XX** todos.
+- 
+
 ## Test trained model
-> :bulb: Look for **XX** todos
 
 TODO
+
+#### Hints :bulb:
+- Look for **XX** todos.
+- 
 
 ## Create own scripts
-> :bulb: Look for XX todos
 
 TODO
+
+#### Hints :bulb:
+- Look for **XX** todos.
+- 
 
 ## Clean up
 TODO

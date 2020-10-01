@@ -2,16 +2,12 @@
 import azureml.core
 from azureml.core import Workspace, ComputeTarget, Datastore, Dataset
 import os
-# local imports
-from src.config import Config; config = Config()
-from src.colors import Colors; c      = Colors()
 
-workspace_name = "wp-claes-ml"
 
 # Load the workspace 
 print("INFO: Loading workspace ...")
-ws = Workspace.get(workspace_name)
-print("{}Ready to use Azure ML '{}' to work with '{}'.{}".format(c.YELLOW, azureml.core.VERSION, ws.name, c.DEFAULT))
+ws = Workspace.from_config()
+print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSION, ws.name))
 
 dataset_name       = input("Enter your dataset name:\n")
 dataset_desciption = input("Enter dataset description:\n")
@@ -34,9 +30,9 @@ if dataset_name not in ws.datasets.keys():
                             name=dataset_name,
                             description=dataset_desciption,
                             create_new_version=False)
-        print("{}Success uploading dataset: '{}'{}".format(c.GREEN, dataset_name, c.DEFAULT))
+        print("Success uploading dataset: '{}'".format(dataset_name))
     except Exception as e:
-        print("{}An error occured while uploading dataset: '{}'{}".format(c.RED, dataset_name, c.DEFAULT))
+        print("An error occured while uploading dataset: '{}'".format(dataset_name))
         print(e)
 else:
-    print("{}Dataset '{}' already exists. Please provide another name.{}".format(c.RED, dataset_name, c.DEFAULT))
+    print("Dataset '{}' already exists. Please provide another name.".format(dataset_name))
