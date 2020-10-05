@@ -1,12 +1,13 @@
 # Work from local machine
 In this task you will learn how you can work with Azure ML from your local machine using the Azure ML SDK library.
 
-The main goal is to learn about Azure ML and the Azure ML SDK, but continue reading if you would like to know more about the machinelearning algorithm and what it does.
+The main goal is to learn about Azure ML and the Azure ML SDK, but if would like to know more about the machinelearning algorithm and what it does, read the [Char RNN](#char-rnn) section.
+
+> :warning: It's important that you go trough the [Requirements](#requirements) section to be able to do any ot the tasks.
 
 ## Char RNN
 TODO
 
-> :warning: It's important that you go trough the [Requirements](#requirements) section to be able to do any ot the tasks.
 
 ## Contents
 1. [Requirements](#requirements)
@@ -82,7 +83,7 @@ If you don't get any error messages you can go to your workspace at [https://ml.
 - Check out the documentation for [register datasets](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-register-datasets#register-datasets).
 
 ## Train a model
-In this task you will upload and run the training script(`train_char_rnn.py`). You can have a look at the script if you like, but it essentially trains a CharRNN model on the dataset you uploaded in the [Upload dataset](#upload-dataset) section.
+In this task you will upload and run the training script(`train_char_rnn.py`). You can have a look at the script if you like, or read more about what it does in the [Char RNN](#char-rnn) section. What it essentially does is that it trains a CharRNN model on your Shakespeare dataset and generates a trained model.
 
 The first thing you need to do is to set up a compute instance. If you don't have one already, you need to follow the steps in section [compute instance](https://github.com/claesgill/azure_ml_workshop/tree/issue_8_new_tasks#compute-instance) before you continue.
 
@@ -91,12 +92,20 @@ Fill in the todos in `4_deploy_to_azure.py`, and run your script:
 python3 4_deploy_to_azure.py
 ```
 
-If you script ran successfully, go to the [https://ml.azure.com]() verify that your training script has completed, and that you have a registered model named ?? .
+If your script ran successfully, go to the [https://ml.azure.com]() verify that your training script has completed, and that you have a registered model named ?? .
 
 #### Hints :bulb:
-- Look for **2** todos.
+- Look for **3** todos.
 - Check out the documentation for [Experiments](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)
 - Learn more about [Estimators](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) in the documentation
+
+## Register a trained model
+TODO
+
+#### Hints :bulb:
+- Look for **XX** todos.
+- 
+
 
 ## Test trained model
 
