@@ -1,6 +1,11 @@
 # Work from local machine
 In this task you will learn how you can work with Azure ML from your local machine using the Azure ML SDK library.
 
+The main goal is to learn about Azure ML and the Azure ML SDK, but continue reading if you would like to know more about the machinelearning algorithm and what it does.
+
+## Char RNN
+TODO
+
 > :warning: It's important that you go trough the [Requirements](#requirements) section to be able to do any ot the tasks.
 
 ## Contents
@@ -77,16 +82,21 @@ If you don't get any error messages you can go to your workspace at [https://ml.
 - Check out the documentation for [register datasets](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-register-datasets#register-datasets).
 
 ## Train a model
-To upload and train the model run:
+In this task you will upload and run the training script(`train_char_rnn.py`). You can have a look at the script if you like, but it essentially trains a CharRNN model on the dataset you uploaded in the [Upload dataset](#upload-dataset) section.
+
+The first thing you need to do is to set up a compute instance. If you don't have one already, you need to follow the steps in section [compute instance](https://github.com/claesgill/azure_ml_workshop/tree/issue_8_new_tasks#compute-instance) before you continue.
+
+Fill in the todos in `4_deploy_to_azure.py`, and run your script:
 ```sh
 python3 4_deploy_to_azure.py
 ```
 
-Here you will need to provide the same **dataset name** that you specified before, and a name for your **experiment**.
+If you script ran successfully, go to the [https://ml.azure.com]() verify that your training script has completed, and that you have a registered model named ?? .
 
 #### Hints :bulb:
-- Look for **XX** todos.
-- 
+- Look for **2** todos.
+- Check out the documentation for [Experiments](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)
+- Learn more about [Estimators](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) in the documentation
 
 ## Test trained model
 
@@ -108,4 +118,4 @@ TODO
 TODO
 
 ## TODOs
-- [ ] Add clean up script ?
+- [ ] Add clean up script
