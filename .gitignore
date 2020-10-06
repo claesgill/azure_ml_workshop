@@ -8,4 +8,3 @@ terraform/
 local/.azureml
 local/.config/
 outputs/
-lo

@@ -3,13 +3,9 @@ import azureml.core
 from azureml.core import Workspace
 from azureml.core import ComputeTarget, Datastore, Dataset
 
-# Setting this value can be the first task (it can be an empty string)
-workspace_name = "wp-claes-ml"
 
-# Load the workspace 
-print("INFO: Loading workspace ...")
-# ws = Workspace.get(config.workspace_name)
-ws = Workspace.get(workspace_name)
+# Load the workspace
+ws = Workspace.get(name="wp-claes-ml") # TODO: Fill inn your workspace name
 print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSION, ws.name))
 
 # Prints all the available compute targets

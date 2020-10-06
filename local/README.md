@@ -80,7 +80,7 @@ Fill in the todos in `3_upload_dataset.py`, and run your script:
 python3 3_upload_dataset.py
 ```
 
-If your script ran successfully, you can visit your workspace at [https://ml.azure.com/](https://ml.azure.com/), and verify that your dataset exists in the **Datasets** page under Assets.
+If your script ran successfully, you can visit your workspace at [https://ml.azure.com/](https://ml.azure.com/), and verify that your dataset exists in the **Datasets** page under Assets. You can also run `python3 1_test_azure.py` that will print your dataset name in the terminal.
 
 #### Hints :bulb:
 - Look for **3** todos.

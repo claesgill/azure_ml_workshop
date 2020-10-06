@@ -12,10 +12,10 @@ estimator = Estimator(
     source_directory="./model",
     entry_script="train_char_rnn.py",
     script_params={
-        "--dataset": "claes", # TODO: Specify the same dataset_name you provided earlier 
+        "--dataset": "", # TODO: Specify the same dataset_name you provided earlier 
         "--n_epochs": 500
         },
-    compute_target="az-workshop-ci",# TODO: Specify your compute target
+    compute_target="",# TODO: Specify your compute target
     pip_packages=[
         "azureml-core",
         "azureml-dataprep",
@@ -29,6 +29,7 @@ estimator = Estimator(
 )
 
 # TODO: Create a "Experiment" and use the submit method to submit the "estimator" object
-experiment = Experiment(workspace=ws, name="my-experiment")
-run = experiment.submit(config=estimator)
-run.wait_for_completion(show_output=True)
+# Recieve the return object of the submittet experiment and use the "wait_for_completion(show_output=True)" method.
+# This will show you the logs for the submitted experiment
+
+

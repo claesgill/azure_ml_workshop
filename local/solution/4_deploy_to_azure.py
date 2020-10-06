@@ -1,24 +1,21 @@
 import os, sys
-from azureml.core import Workspace, Experiment, RunConfiguration, ScriptRunConfig
-from azureml.train.dnn import PyTorch
+import azureml
+from azureml.core import Workspace, Experiment
 from azureml.train.estimator import Estimator
+azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 10 * 10**9 # 10GB
+ 
+ws = Workspace.from_config()
 
-# TODO: fill inn here
-dataset_name      = input("Enter your dataset name:\n")
-experiment_name   = input("Enter a experient name:\n")
-entry_script_name = 'train_on_azure.py'
-
-# TODO: Make need  to fill in
-ws = Workspace.get(name='wp-claes-ml')
-
+# Creating an Estimator which is the environment for your experiment
 estimator = Estimator(
-    source_directory='./',
-    entry_script=entry_script_name,
+    # source_directory="./model/",
+    source_directory="./model",
+    entry_script="train_char_rnn.py",
     script_params={
-        '--filename': 'shakespare_1',
-        '--n_epochs': 10
+        "--dataset": "claes", # TODO: Specify the same dataset_name you provided earlier 
+        "--n_epochs": 500
         },
-    compute_target='claes-testing',
+    compute_target="az-workshop-ci",# TODO: Specify your compute target
     pip_packages=[
         "azureml-core",
         "azureml-dataprep",
@@ -31,6 +28,9 @@ estimator = Estimator(
     ]
 )
 
-# Submit experiment
-experiment = Experiment(workspace=ws, name=experiment_name) # TODO: Make name dynamic from different users
+# TODO: Create a "Experiment" and use the submit method to submit the "estimator" object
+# Recieve the return object of the submittet experiment and use the "wait_for_completion(show_output=True)" method.
+# This will show you the logs for the submitted experiment
+experiment = Experiment(workspace=ws, name="my-experiment")
 run = experiment.submit(config=estimator)
+run.wait_for_completion(show_output=True)

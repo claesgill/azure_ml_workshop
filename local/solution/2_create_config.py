@@ -1,7 +1,7 @@
 # TODO: Import Workspace from azureml core
 from azureml.core import Workspace
 
-# TODO: Create a Workspace instance to get your current workspace
+# TODO: Create a Workspace instance and the get method to get your workspace
 ws = Workspace.get("wp-claes-ml")
 
 # TODO: Use the write_config() method to get the workspace config on your local machine

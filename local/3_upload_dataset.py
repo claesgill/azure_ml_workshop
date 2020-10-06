@@ -1,19 +1,15 @@
 # external imports
 import azureml.core
 from azureml.core import Workspace, ComputeTarget, Datastore, Dataset
-import os
-# local imports
-from src.config import Config; config = Config()
-from src.colors import Colors; c      = Colors()
 
 
 # TODO: Load the workspace using the from_config method
-# ws = Workspace.from_config()
+ws = 
 
 print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSION, ws.name))
 
 # TODO: Fill in your dataset name and the dataset description.
-# These will be used in the next TODO.
+# These will be used in the next todo.
 dataset_name       = ""
 dataset_desciption = ""
 
@@ -32,7 +28,7 @@ if dataset_name not in ws.datasets.keys():
         shakespeare_data = Dataset.File.from_files(path=(default_ds, "./shakespeare.txt"))
 
         # TODO: Use the .register method on 'shakespeare_data' object to register your dataset to Azure ML
-        # The name and description should be the 'dataset_name' and 'dataset_description' you provided in the last TODO
+        # The name and description should be the 'dataset_name' and 'dataset_description' you provided in the last todo
 
 
         print("Success uploading dataset: '{}'".format(dataset_name))

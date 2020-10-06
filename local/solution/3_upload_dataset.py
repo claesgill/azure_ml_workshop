@@ -1,35 +1,39 @@
 # external imports
 import azureml.core
 from azureml.core import Workspace, ComputeTarget, Datastore, Dataset
-import os
 
 
-# Load the workspace 
-print("INFO: Loading workspace ...")
+# TODO: Load the workspace using the from_config method
 ws = Workspace.from_config()
+
 print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSION, ws.name))
 
-dataset_name       = input("Enter your dataset name:\n")
-dataset_desciption = input("Enter dataset description:\n")
+# TODO: Fill in your dataset name and the dataset description.
+# These will be used in the next todo.
+dataset_name       = "shakespeare"
+dataset_desciption = "This is a dataset filled with Shakespeare"
 
-if dataset_name not in ws.datasets.keys():
-    # TODO: Check if dataset exists
-    # TODO: Save metadata?
-    
+
+if dataset_name not in ws.datasets.keys():    
     print("Uploading '{}' ...".format(dataset_name))
     try:
         # Uploading and registering dataset
         default_ds = ws.get_default_datastore()
-        default_ds.upload_files(files=['./data/shakespeare.txt'], # Upload the diabetes csv files in /data
+        default_ds.upload_files(files=['./data/shakespeare.txt'], # Upload the shakespeare file from data/
                                 target_path='./',                 # Put it in a folder path in the datastore
                                 overwrite=True,                   # Replace existing files of the same name
-                                show_progress=True)
+                                show_progress=True)               # Show progress while uploading
 
+        # Creating a Dataset File object to store the stream
         shakespeare_data = Dataset.File.from_files(path=(default_ds, "./shakespeare.txt"))
+
+        # TODO: Use the .register method on 'shakespeare_data' object to register your dataset to Azure ML
+        # The name and description should be the 'dataset_name' and 'dataset_description' you provided in the last todo
         shakespeare_data.register(workspace=ws,
                             name=dataset_name,
                             description=dataset_desciption,
                             create_new_version=False)
+
         print("Success uploading dataset: '{}'".format(dataset_name))
     except Exception as e:
         print("An error occured while uploading dataset: '{}'".format(dataset_name))

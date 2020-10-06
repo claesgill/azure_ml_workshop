@@ -3,7 +3,7 @@ import argparse
 import string
 import torch
 from azureml.core import Workspace, Model
-
+# local
 from model.src.src import generate, CharRNN
 
 ws = Workspace.from_config()
@@ -21,20 +21,15 @@ all_characters = string.printable
 n_characters = len(all_characters)
 
 # TODO: Use the Model class to download your trained model
-model = Model(workspace=ws, name=args.modelname) # , version=5
-model = model.download(target_dir='.', exist_ok=True)
 
+
+# Loading the model and reconstructs the model
 filename = "outputs/" + args.modelname + ".pt"
-print(filename)
 decoder_state = torch.load(filename)
-char_rnn = CharRNN(n_characters,
-                   100,
-                   n_characters,
-                   "gru",
-                   2)
+char_rnn = CharRNN(n_characters, 100, n_characters, "gru", 2)
 char_rnn.load_state_dict(decoder_state)
 
-# predicted = generate(decoder, **vars(args))
+# Generate the predicted sequence based of the hyperparameters
 predicted = generate(decoder=char_rnn,
                      prime_str=args.prime_str,
                      predict_len=args.predict_len,
