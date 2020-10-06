@@ -1,7 +1,9 @@
 .idea/
+.vscode/
 env/
 pytorch_env/
 local/src/__pycache__/
 terraform/
 local/.azureml
 local/.config/
+outputs/

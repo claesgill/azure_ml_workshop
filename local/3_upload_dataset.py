@@ -7,13 +7,13 @@ from src.config import Config; config = Config()
 from src.colors import Colors; c      = Colors()
 
 
-# Load the workspace 
-print("INFO: Loading workspace ...")
-ws = Workspace.from_config()
+# TODO: Load the workspace using the from_config method
+# ws = Workspace.from_config()
 
-print("{}Ready to use Azure ML '{}' to work with '{}'.{}".format(c.YELLOW, azureml.core.VERSION, ws.name, c.DEFAULT))
+print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSION, ws.name))
 
-# TODO: Give a name to your dataset and a description
+# TODO: Fill in your dataset name and the dataset description.
+# These will be used in the next TODO.
 dataset_name       = ""
 dataset_desciption = ""
 
@@ -23,21 +23,21 @@ if dataset_name not in ws.datasets.keys():
     try:
         # Uploading and registering dataset
         default_ds = ws.get_default_datastore()
-        default_ds.upload_files(files=['./data/shakespeare.txt'], # Upload the diabetes csv files from /data
+        default_ds.upload_files(files=['./data/shakespeare.txt'], # Upload the shakespeare file from data/
                                 target_path='./',                 # Put it in a folder path in the datastore
                                 overwrite=True,                   # Replace existing files of the same name
-                                show_progress=True)
+                                show_progress=True)               # Show progress while uploading
 
         # Creating a Dataset File object to store the stream
         shakespeare_data = Dataset.File.from_files(path=(default_ds, "./shakespeare.txt"))
 
-        # TODO: Use the .register method on 'shakespeare_data' to register your dataset to Azure ML
-        
+        # TODO: Use the .register method on 'shakespeare_data' object to register your dataset to Azure ML
+        # The name and description should be the 'dataset_name' and 'dataset_description' you provided in the last TODO
 
 
-        print("{}Success uploading dataset: '{}'{}".format(c.GREEN, dataset_name, c.DEFAULT))
+        print("Success uploading dataset: '{}'".format(dataset_name))
     except Exception as e:
-        print("{}An error occured while uploading dataset: '{}'{}".format(c.RED, dataset_name, c.DEFAULT))
+        print("An error occured while uploading dataset: '{}'".format(dataset_name))
         print(e)
 else:
-    print("{}Dataset '{}' already exists. Please provide another name.{}".format(c.RED, dataset_name, c.DEFAULT))
+    print("Dataset '{}' already exists. Please provide another name.".format(dataset_name))

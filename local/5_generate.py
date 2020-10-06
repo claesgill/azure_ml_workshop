@@ -1,57 +1,45 @@
-#!/usr/bin/env python
-# https://github.com/spro/char-rnn.pytorch
-
-import torch
 import os
 import argparse
+import string
+import torch
+from azureml.core import Workspace, Model
 
-from helpers import *
-from model import *
+from model.generate import generate
+from model.char_rnn import CharRNN
 
-def generate(decoder, prime_str='A', predict_len=100, temperature=0.8, cuda=False):
-    hidden = decoder.init_hidden(1)
-    prime_input = Variable(char_tensor(prime_str).unsqueeze(0))
-
-    if cuda:
-        hidden = hidden.cuda()
-        prime_input = prime_input.cuda()
-    predicted = prime_str
-
-    # Use priming string to "build up" hidden state
-    for p in range(len(prime_str) - 1):
-        _, hidden = decoder(prime_input[:,p], hidden)
-        
-    inp = prime_input[:,-1]
-    
-    for p in range(predict_len):
-        output, hidden = decoder(inp, hidden)
-        
-        # Sample from the network as a multinomial distribution
-        output_dist = output.data.view(-1).div(temperature).exp()
-        top_i = torch.multinomial(output_dist, 1)[0]
-
-        # Add predicted character to string and use as next input
-        predicted_char = all_characters[top_i]
-        predicted += predicted_char
-        inp = Variable(char_tensor(predicted_char).unsqueeze(0))
-        if cuda:
-            inp = inp.cuda()
-
-    return predicted
-
-# Run as standalone script
-if __name__ == '__main__':
+ws = Workspace.from_config()
 
 # Parse command line arguments
-    argparser = argparse.ArgumentParser()
-    argparser.add_argument('filename', type=str)
-    argparser.add_argument('-p', '--prime_str', type=str, default='A')
-    argparser.add_argument('-l', '--predict_len', type=int, default=100)
-    argparser.add_argument('-t', '--temperature', type=float, default=0.8)
-    argparser.add_argument('--cuda', action='store_true')
-    args = argparser.parse_args()
+argparser = argparse.ArgumentParser()
+argparser.add_argument("--modelname",         type=str,   default="char_rnn_model")
+argparser.add_argument("-p", "--prime_str",   type=str,   default="A")
+argparser.add_argument("-l", "--predict_len", type=int,   default=100)
+argparser.add_argument("-t", "--temperature", type=float, default=0.8)
+argparser.add_argument("--cuda",              action="store_true")
+args = argparser.parse_args()
 
-    decoder = torch.load(args.filename)
-    del args.filename
-    print(generate(decoder, **vars(args)))
+all_characters = string.printable
+n_characters = len(all_characters)
 
+# TODO: Use the Model class to download your trained model
+model = Model(workspace=ws, name=args.modelname) # , version=5
+model = model.download(target_dir='.', exist_ok=True)
+
+filename = "outputs/" + args.modelname + ".pt"
+print(filename)
+decoder_state = torch.load(filename)
+char_rnn = CharRNN(n_characters,
+                   100,
+                   n_characters,
+                   "gru",
+                   2)
+char_rnn.load_state_dict(decoder_state)
+
+# predicted = generate(decoder, **vars(args))
+predicted = generate(decoder=char_rnn,
+                     prime_str=args.prime_str,
+                     predict_len=args.predict_len,
+                     temperature=args.temperature,
+                     cuda=args.cuda)
+
+print(predicted)

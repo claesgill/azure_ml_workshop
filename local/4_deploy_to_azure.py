@@ -1,19 +1,22 @@
 import os, sys
-from azureml.core import Workspace, Experiment, RunConfiguration, ScriptRunConfig
+import azureml
+from azureml.core import Workspace, Experiment
 from azureml.train.estimator import Estimator
-# from azureml.train.dnn import PyTorch
+azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 10 * 10**9 # 10GB
  
 ws = Workspace.from_config()
 
-# Creating an Estimator which is the environment for you experiment
+
+# Creating an Estimator which is the environment for your experiment
 estimator = Estimator(
-    source_directory="./",
-    entry_script="train_on_azure.py",
+    # source_directory="./model/",
+    source_directory="./model",
+    entry_script="train_char_rnn.py",
     script_params={
-        "--filename": "", # TODO: Specify the same dataset_name you provided earlier 
+        "--dataset": "claes", # TODO: Specify the same dataset_name you provided earlier 
         "--n_epochs": 10
         },
-    compute_target="claes-testing",# TODO: Specify your compute target
+    compute_target="az-workshop-ci",# TODO: Specify your compute target
     pip_packages=[
         "azureml-core",
         "azureml-dataprep",
@@ -27,5 +30,6 @@ estimator = Estimator(
 )
 
 # TODO: Create a "Experiment" and use the submit method to submit the "estimator" object
-experiment = Experiment(workspace=ws, name="My experiment")
+experiment = Experiment(workspace=ws, name="my-experiment")
 run = experiment.submit(config=estimator)
+run.wait_for_completion(show_output=True)
