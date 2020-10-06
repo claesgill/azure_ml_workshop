@@ -46,17 +46,17 @@ pip3 install -r requirements.txt
 ## Getting started
 > :exclamation: Before you run the code it's important to note that all scripts include unfinished **todos**. These needs to be completed in each section to be able to run the script.
 
-When you have verifyed that all [Requirements](#requirements) are in place, you can check the connection with Azure by running the following script. NB! Remember to fill in the **todo** first.   
+When you have verifyed that all [Requirements](#requirements) are in place, you can check your connection to Azure by running the script below.  
+NB! Remember to fill in the **todos** first.
 ```sh
 python3 1_test_azure.py
 ```
-This script will output your *Azure ML version*, *compute targets*, *datastores* and *datasets*.
+This script will output your *Azure ML version*, *compute targets*, *datastores* and *datasets* if any.
 
-Now that you've verified the connection proceed to section [Upload dataset](#upload-dataset).
+Now that you've verified the connection proceed to the next section, [Create a config](#create-a-config).
 
 ## Create a config
-We need the [`Workspace`](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py#workspace) class to consume our workspace on Azure Cloud. In the last section we used `Workspace.get()` method where we specified the `workspace_name` to get our workspace. Since we need to specify the workspace in each script, this becomes tedious over time. 
-So, a solution is to use the `from_config` method instead to load the workspace from a config file. But before you can use that method you need to create the config using the `write_config` method.
+We need the [`Workspace`](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py#workspace) class to consume our workspace on Azure Cloud. In the previous section we used `Workspace.get()` method where we specified the `workspace_name` to get our workspace. Since we need to specify the workspace in each script, this becomes tedious over time. So, a solution is to use the `from_config` method instead to load the workspace from a config file. But before you can do that method you need to create the config using the `write_config` method.
 
 Fill in the todos in `2_create_config.py`, and run your script to create the config:
 ```sh
