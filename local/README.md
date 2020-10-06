@@ -46,7 +46,7 @@ pip3 install -r requirements.txt
 ## Getting started
 > :exclamation: Before you run the code it's important to note that all scripts include unfinished **todos**. These needs to be completed in each section to be able to run the script.
 
-When you have verifyed that all [Requirements](#requirements) are in place, you can check the connection with Azure by running the following script. NB! Remember to fill in the **todos** first.   
+When you have verifyed that all [Requirements](#requirements) are in place, you can check the connection with Azure by running the following script. NB! Remember to fill in the **todo** first.   
 ```sh
 python3 1_test_azure.py
 ```
@@ -66,41 +66,42 @@ python3 2_create_config.py
 If your script worked, you should be able to locate a `.azureml/` folder containing a `.config.json` file.
 
 #### Hints :bulb:
-- Look for **3** todos
+- Look for **3** todos.
 - Check out the documentation for the [Workspace class](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py#workspace). 
 
 
 ## Upload dataset
-In section [Datasets](https://github.com/claesgill/azure_ml_workshop#datasets) you uploaded a dataset manually into your workspace. This section you'll learn how  you can upload a dataset using the [Azure ML SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py). 
+In the [Datasets](https://github.com/claesgill/azure_ml_workshop#datasets) section you can learn how to upload a dataset manually into your workspace. However, in this section you'll learn how you can upload a dataset using the [Azure ML SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/?view=azure-ml-py), and don't worry you will also implement the `write_config` method to get use of your hard work from the previous section :wink:
 
 Fill in the todos in `3_upload_dataset.py`, and run your script:
 ```sh
 python3 3_upload_dataset.py
 ```
 
-If you don't get any error messages you can go to your workspace at [https://ml.azure.com/](https://ml.azure.com/), and verify that your dataset exists in the **Datasets** tab under Assets.
+If your script ran successfully, you can visit your workspace at [https://ml.azure.com/](https://ml.azure.com/), and verify that your dataset exists in the **Datasets** page under Assets.
 
 #### Hints :bulb:
-- Look for **3** todos
+- Look for **3** todos.
 - Check out the documentation for [register datasets](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-register-datasets#register-datasets).
 
 ## Train a model
-In this task you will upload and run the training script(`train_char_rnn.py`). You can have a look at the script if you like, or read more about what it does in the [Char RNN](#char-rnn) section. What it essentially does is that it trains a CharRNN model on the dataset you uploaded previously, and generates a trained model.
+In this task you will upload and run the training script(`train_char_rnn.py`). You won't edit that file yet, but feel free to have a look at it or read about what it does in the [Char RNN](#char-rnn) section. However, what it essentially does is that it trains a CharRNN model with the dataset you uploaded previously, and generates a trained model. In the code you will se that we use an [Estimator](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) to create the python environment. The estimator/environment will be submitted to Azure using the [Experiment](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) class. Azure use the term experiments for each script you push to the cloud, and is quite convinient since it keeps track of all your runs wich you can monitor in you [workspace](https://ml.azure.com).
 
-The first thing you need to do is to set up a compute instance. You need to follow the steps in section [compute instance](https://github.com/claesgill/azure_ml_workshop/tree/issue_8_new_tasks#compute-instance) before you continue.
+For this task you will need a Compute Instance. If you don't have one already set up, you need to follow the steps in section [compute instance](https://github.com/claesgill/azure_ml_workshop/tree/issue_8_new_tasks#compute-instance) before you continue with the todos.
 
 Fill in the todos in `4_deploy_to_azure.py`, and run your script:
 ```sh
 python3 4_deploy_to_azure.py
 ```
+> :coffee: This script will take some time to run the first time since it need to build the python environment in docker container.
 
-If your script finish with no errors, you can monitor that your experiment run successfully in the terminal. Another option is to monitor it in your ml-workspace ([https://ml.azure.com](https://ml.azure.com). See the below steps.
+While your script runs, you can monitor that your experiment run successfully in the terminal. Another option is to monitor it in your [workspace](https://ml.azure.com). See the below steps.
 
 _NB! You may want to hit **refresh** frequently in each of the following steps_
 
-1. Navigate to the **Experiments** page and choose your experiment 
-2. Click your latest run and navigate to the **Outputs + logs** tab
-3. Expand **azureml-logs** and wait for **70_driver_log.txt** to show and click it when it does. In this log-file you watch all the outputs from the  training-script and verify that everything ran successfully
+1. Navigate to the **Experiments** page and choose your experiment.
+2. Click your latest run and navigate to the **Outputs + logs** tab. Note that all your outputfiles (if any) will appear here.
+3. Expand **azureml-logs** and wait for **70_driver_log.txt** to show and click it when it does. In this log-file you watch all the outputs from the  training-script and verify that everything ran successfully.
 
 #### Hints :bulb:
 - Look for **3** todos
@@ -108,26 +109,23 @@ _NB! You may want to hit **refresh** frequently in each of the following steps_
 - Learn more about [Estimators](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) in the documentation
 
 ## Register a trained model
-In the previous section you may have noticed that your model was saved. However, it got saved in the container environment in Azure ML in witch don't make
-it available to us. In order to make the model available to us we can use the `Model` class, and more specifically the `register` method to upload our model to Azure. Let's go ahead and do that!
+In the previous section you traind your model, and you may have noticed that your model got saved. However, it got saved in the container environment in Azure ML in witch don't make it available for further usage. In order to make the model available we can use the `Model` class, and more specifically the `register` method to upload our model to Azure. The good thing about registering a model to Azure, is that you can keep track of all your versions. This can be very usefull when you are testing different hyperparameters to get the best possible model. But enough talk, let's dive into the code.
 
 Fill in the todos in `train_char_rnn.py` located in the `model` folder. Run the `4_deploy_to_azure.py` script afterwards:
 ```sh
 python3 4_deploy_to_azure.py
 ```
 
-To verify that your model was successfully uploaded, navigate to the **Models** page and you should see your model with the same name as you gave it.
-You can click it to see more details.
+To verify that your model was successfully uploaded, navigate to the **Models** page and you should see your model with the same name as you gave it. You can click on it to see more details.
 
 #### Hints :bulb:
-- Look for **1** todos
-- The model i saved in the outputs folder in Azure ML
-- Check out the documentation for the [Model](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py) class
+- Look for **1** todos.
+- The model is saved in the outputs folder in Azure ML.
+- Check out the documentation for the [Model](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py) class.
 
 
 ## Test trained model
-Now that you have trained and uploaded your model, it's time to test it and see how well it works. You can do this using the `5_generate.py` script.
-The only thing you'll need to do is to download the model you registered earlier using the `Model` class and `download` method.
+Now that you have trained and uploaded your model, it's time to test it and see how well it works. You can do this using the `5_generate.py` script. The only thing you'll need to do is to download the model you registered earlier using the `Model` class and `download` method.
 
 Fill in the todo in `5_generate.py` and run it:
 ```sh

@@ -6,7 +6,6 @@ azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 10 * 10**9 # 10GB
  
 ws = Workspace.from_config()
 
-
 # Creating an Estimator which is the environment for your experiment
 estimator = Estimator(
     # source_directory="./model/",
