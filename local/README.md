@@ -10,6 +10,8 @@ The machinelearning that is used in this workshop is the Char RNN model, and is 
 
 Takes in a sequence of characters and trying to predict the next character in the sequence...
 
+TODO
+
 ## Contents
 1. [Requirements](#requirements)
     1. [Installation](#installation)
@@ -19,7 +21,7 @@ Takes in a sequence of characters and trying to predict the next character in th
 5. [Train a model](#train-a-model)
 6. [Register a trained model](#register-a-trained-model)
 7. [Test trained model](#test-trained-model)
-8. [Create own scripts](#create-own-scripts)
+8. [What to do next](#what-to-do-next)
 9. [Clean up](#clean-up)
 
 ## Requirements
@@ -104,14 +106,14 @@ _NB! You may want to hit **refresh** frequently in each of the following steps_
 3. Expand **azureml-logs** and wait for **70_driver_log.txt** to show and click it when it does. In this log-file you watch all the outputs from the  training-script and verify that everything ran successfully.
 
 #### Hints :bulb:
-- Look for **3** todos
-- Check out the documentation for [Experiments](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)
-- Learn more about [Estimators](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) in the documentation
+- Look for **3** todos.
+- Check out the documentation for [Experiments](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py).
+- Learn more about [Estimators](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) in the documentation.
 
 ## Register a trained model
 In the previous section you traind your model, and you may have noticed that your model got saved. However, it got saved in the container environment in Azure ML in witch don't make it available for further usage. In order to make the model available we can use the `Model` class, and more specifically the `register` method to upload our model to Azure. The good thing about registering a model to Azure, is that you can keep track of all your versions. This can be very usefull when you are testing different hyperparameters to get the best possible model. But enough talk, let's dive into the code.
 
-Fill in the todos in `train_char_rnn.py` located in the `model` folder. Run the `4_deploy_to_azure.py` script afterwards:
+Fill in the todo in `train_char_rnn.py` located in the `model` folder. Run the `4_deploy_to_azure.py` script afterwards:
 ```sh
 python3 4_deploy_to_azure.py
 ```
@@ -119,7 +121,7 @@ python3 4_deploy_to_azure.py
 To verify that your model was successfully uploaded, navigate to the **Models** page and you should see your model with the same name as you gave it. You can click on it to see more details.
 
 #### Hints :bulb:
-- Look for **1** todos.
+- Look for **1** todo.
 - The model is saved in the outputs folder in Azure ML.
 - Check out the documentation for the [Model](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py) class.
 
@@ -132,23 +134,40 @@ Fill in the todo in `5_generate.py` and run it:
 python3 5_generate.py
 ```
 
-TODO - how to validate
+The script will output a predicted string based of the input-sequence, which is defaulted to the character `A`. The prediction string would probably not make any sense since we have only being training the model for 500 epochs. The important thing is that it predicts something, and feel free to play around with the input arguments for the script. Have a look at what flag you can sett and tune to get a more interesting/funny result.
+
+| argument        | type   | default |
+| :-------------- | :----- | :------ |
+| `--prime_str`   | string | "A"     | 
+| `--predict_len` | number | 100     |
+
+There are other flags to set, but those are for other usecases so I wouldn't spend time on those.
+
+#### Example tuning
+```sh
+python3 5_generate.py --prime_str "Here" --predict_len 300
+```
 
 #### Hints :bulb:
-- Look for **1** todo
-- Check out the methods in the [Model](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#methods) class documentation
+- Look for **1** todo.
+- If you uploaded multiple models you can specify a version number. I.e. `version=4`.
+- Check out the methods in the [Model](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#methods) class documentation.
 
 
-## Create own scripts
-TODO
+## What to do next
+If you reach this section, congrats and well done :clap: :tada:
 
-#### Hints :bulb:
-- Look for **XX** todos.
-- 
+But wait there is more! There are still a few more things you can do if you're up for it.
 
-## Clean up
-TODO
+1. You can continue playing around with this setup and perhaps upload a different dataset to train a new model. You can ofc choose whatever text you want!
+2. You can continue learning about Azure using the notebooks. In the root [README](https://github.com/claesgill/azure_ml_workshop#azure-ml-workshop-test_tube) you will find all the instructions you need!
+ 
 
-## TODOs
-- [ ] Add clean up script
-- [x] Rewrite train_char_rnn.py with helpers as it was before..
+## Clean up :coffee:
+If you are completely done you can clean up you workspace. This means that you need to shut down or stop your compute instance for the reason that this is a pay-as-you-go service :money_with_wings:
+
+
+1. In [Azure ML studio](https://ml.azure.com/), navigate to the **Compute** page and on the **Compute instances** tab choose your compute instanse.
+    You can now choose one of the following options:  
+    * Alt 1: Click **Stop** to shut it down.
+    * Alt 2: Click **Delete** to remove it.

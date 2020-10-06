@@ -3,7 +3,9 @@
 env/
 pytorch_env/
 local/src/__pycache__/
+local/model/src/__pycache__/
 terraform/
 local/.azureml
 local/.config/
 outputs/
+lo

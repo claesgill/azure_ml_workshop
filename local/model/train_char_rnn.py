@@ -20,7 +20,7 @@ argparser = argparse.ArgumentParser()
 argparser.add_argument('--dataset',       type=str, default='shakespeare.txt')
 argparser.add_argument('--model',         type=str, default='gru')
 argparser.add_argument('--n_epochs',      type=int, default=10)
-argparser.add_argument('--print_every',   type=int, default=5)
+argparser.add_argument('--print_every',   type=int, default=100)
 argparser.add_argument('--hidden_size',   type=int, default=100)
 argparser.add_argument('--n_layers',      type=int, default=2)
 argparser.add_argument('--learning_rate', type=float, default=0.01)
@@ -44,6 +44,7 @@ def random_training_set(chunk_len, batch_size):
         start_index = random.randint(0, file_len - chunk_len)
         end_index = start_index + chunk_len + 1
         chunk = file[start_index:end_index]
+        if len(chunk[:-1]) < 200: continue
         inp[bi] = char_tensor(chunk[:-1])
         target[bi] = char_tensor(chunk[1:])
     inp = Variable(inp)

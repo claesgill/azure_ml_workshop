@@ -4,8 +4,7 @@ import string
 import torch
 from azureml.core import Workspace, Model
 
-from model.generate import generate
-from model.char_rnn import CharRNN
+from model.src.src import generate, CharRNN
 
 ws = Workspace.from_config()
 
