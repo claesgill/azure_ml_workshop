@@ -175,7 +175,7 @@ There are other flags to set, but those are for other usecases so I wouldn't spe
 
 #### Example tuning
 ```sh
-python3 5_generate.py --prime_str "Here" --predict_len 300
+python3 5_generate.py --modelname <your-model-name> --prime_str "Here" --predict_len 300
 ```
 
 #### Hints :bulb:
