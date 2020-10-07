@@ -5,4 +5,4 @@ One important note is that you would not be able to run the scripts because they
 
 
 ## Note-to-self
-Scripts need to be inside this folder to run the code. Except `3_upload_dataset.py` it contains path outside of the solution folder (run from local folder).
+Need to be inside this folder to run the code. Except `3_upload_dataset.py` it contains path outside of the solution folder (run from local folder).
