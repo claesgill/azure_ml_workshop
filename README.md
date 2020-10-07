@@ -7,7 +7,7 @@ To get started, follow the [Contents](#contents) chronologically and complete ea
 
 ## Contents
 0. [Before you start](#before-you-start)
-1. [Getting started](#getting_started)
+1. [Getting started](#getting-started)
 2. [Compute instance](#compute-instance)  
     1. [Create a compute instance](#create-a-compute-instance)
     2. [Testing and verifying compute instance](#testing-and-verifying-compute-instance)
