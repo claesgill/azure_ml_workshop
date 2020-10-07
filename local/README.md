@@ -87,7 +87,21 @@ If your script ran successfully, you can visit your workspace at [https://ml.azu
 - Check out the documentation for [register datasets](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-register-datasets#register-datasets).
 
 ## Train a model
-In this task you will upload and run the training script(`train_char_rnn.py`). You won't edit that file yet, but feel free to have a look at it or read about what it does in the [Char RNN](#char-rnn) section. However, what it essentially does is that it trains a CharRNN model with the dataset you uploaded previously, and generates a trained model. In the code you will se that we use an [Estimator](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) to create the python environment. The estimator/environment will be submitted to Azure using the [Experiment](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) class. Azure use the term experiments for each script you push to the cloud, and is quite convinient since it keeps track of all your runs wich you can monitor in you [workspace](https://ml.azure.com).
+In this task you will upload and run the training script(`train_char_rnn.py`). You can read about what it does in the [Char RNN](#char-rnn) section. However, what it essentially does is that it trains a CharRNN model with the dataset you uploaded previously, and generates a trained model.
+
+So, now that you have a dataset uploaded and ready to use, you need to make sure that it's included in the training script. This means that you have to implement the [Dataset](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) class using the `get_by_name` and `download` method.
+
+Fill in the **FIRST** todo in `train_char_rnn.py` located in the `model` folder. 
+NB! There is **2** todos here, but you only need to do the first one for this task.
+
+Unfortunately there is no good way to check that your code is working by this point, but ask for help if you are unsure. We'll be happy to help you.
+
+#### Hints :bulb:
+- Look for **1** todo.
+- In the `get_by_name` method the name input-field should be `name=args.dataset`
+- Check out the [Dataset](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) class documentation and methods.
+
+The next step is to work with the `4_deploy_to_azure.py` script. In this script you will se that we use an [Estimator](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) to create the python environment. The estimator/environment will be submitted to Azure using the [Experiment](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) class. Azure use the term experiments for each script you push to the cloud, and is quite convenient since it keeps track of all your runs which you can monitor in you [workspace](https://ml.azure.com).
 
 For this task you will need a Compute Instance. If you don't have one already set up, you need to follow the steps in section [compute instance](https://github.com/claesgill/azure_ml_workshop/tree/issue_8_new_tasks#compute-instance) before you continue with the todos.
 
@@ -95,7 +109,7 @@ Fill in the todos in `4_deploy_to_azure.py`, and run your script:
 ```sh
 python3 4_deploy_to_azure.py
 ```
-> :coffee: This script will take some time to run the first time since it need to build the python environment in docker container.
+> :coffee: This script will take some time to run the first time since it need to build the python environment in a docker container.
 
 While your script runs, you can monitor that your experiment run successfully in the terminal. Another option is to monitor it in your [workspace](https://ml.azure.com). See the below steps.
 

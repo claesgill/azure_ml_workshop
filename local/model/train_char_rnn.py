@@ -32,11 +32,15 @@ args = argparser.parse_args()
 
 
 # TODO: Download the dataset you uploaded earlier by using the Dataset class
-dataset = Dataset.get_by_name(ws, name=args.dataset)
-file_path = dataset.download(target_path='.', overwrite=True)
-file, file_len = read_file(file_path[0])
+# Use the recieved file_path as input to the "read_file()" function.
+# NB! The filepath is a list and read_file expect a string
 
 
+
+file, file_len = read_file() # <-- Input the file path
+
+
+# Splitting dataset function
 def random_training_set(chunk_len, batch_size):
     inp = torch.LongTensor(batch_size, chunk_len)
     target = torch.LongTensor(batch_size, chunk_len)
@@ -54,6 +58,7 @@ def random_training_set(chunk_len, batch_size):
         target = target.cuda()
     return inp, target
 
+# Training function
 def train(inp, target):
     hidden = decoder.init_hidden(args.batch_size)
     if args.cuda:
@@ -102,9 +107,8 @@ save_filename = "outputs/char_rnn_model.pt"
 torch.save(decoder.state_dict(), save_filename)
 
 # TODO: Use the Model class and the register method to upload the model to Azure ML
-model = Model.register(workspace=ws,
-                       model_name="char_rnn_model",
-                       model_path="outputs/")
+
+
 
 # Complete the run
 run.complete()
