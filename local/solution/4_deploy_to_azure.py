@@ -12,7 +12,7 @@ estimator = Estimator(
     source_directory="./model",
     entry_script="train_char_rnn.py",
     script_params={
-        "--dataset": "claes", # TODO: Specify the same dataset_name you provided earlier 
+        "--dataset": "shakespeare", # TODO: Specify the same dataset_name you provided earlier 
         "--n_epochs": 500
         },
     compute_target="az-workshop-ci",# TODO: Specify your compute target

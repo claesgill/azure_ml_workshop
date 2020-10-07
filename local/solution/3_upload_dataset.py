@@ -30,9 +30,9 @@ if dataset_name not in ws.datasets.keys():
         # TODO: Use the .register method on 'shakespeare_data' object to register your dataset to Azure ML
         # The name and description should be the 'dataset_name' and 'dataset_description' you provided in the last todo
         shakespeare_data.register(workspace=ws,
-                            name=dataset_name,
-                            description=dataset_desciption,
-                            create_new_version=False)
+                                  name=dataset_name,
+                                  description=dataset_desciption,
+                                  create_new_version=False)
 
         print("Success uploading dataset: '{}'".format(dataset_name))
     except Exception as e:
