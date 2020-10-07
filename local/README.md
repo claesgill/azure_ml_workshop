@@ -6,17 +6,23 @@ The main goal is to learn about Azure ML and the Azure ML SDK, but if would like
 > :warning: It's important that you go trough the [Requirements](#requirements) section to be able to do any of the tasks.
 
 ## Char RNN
-The machinelearning that is used in this workshop is the Char RNN model, and is taken from [this reposetory](https://github.com/spro/char-rnn.pytorch). It is a multi-layer *Recurrent Neural Network (RNN)* that uses the *GRU* gating mechanism which is quite similar to the *LSTM*. Both GRU and LSTM is a solution to short-term-memory which means that it uses it's internal gates to learn what data that is important given the context. Learning this way makes the model able to do predictions since it sort of learns the context of what being fed into it. In our char rnn we predict characters given a sequence, but you could also make it predict full words in a sentence. 
+The machinelearning algorithm that is used in this workshop is the Char RNN model, and is taken from [this reposetory](https://github.com/spro/char-rnn.pytorch). It is a multi-layer *Recurrent Neural Network (RNN)* that uses the *GRU* gating mechanism which is quite similar to the *LSTM*. Both GRU and LSTM is a solution to short-term-memory which means that it uses it's internal gates to learn what data that is important given the context. Learning this way makes the model able to do predictions since it learns the context of what being fed into it. In our char rnn we predict characters given a sequence, but you could also make it predict full words in a sentence. 
 
-As input, this model receives a sequence of characters where it tries to predict the next character in the given sequence, based of what data is has seen before. For training we use the `shakespeare.txt` dataset in the data folder so we expect the model to learn most in that context. So if we try to predict a sequence of range 100 character given a input sequence of `You` it might spit out something like this:
+As input, the trained model receives a sequence of characters where it tries to predict the next character in the given sequence, based of what data is has seen before. For training we use the `shakespeare.txt` dataset, from the data folder, so we expect the model to learn sequences in that context. So if we try to predict a sequence of range 100 character given a input sequence of `Hi` it might generate something like this:
 
-.....
+> His hundgry father's dead deed,
+> To breathes then you, for spit them banishment yourself
+> From me? What
 
-Which is quite funny. I've also trained a model on some Skatteetaten job advertisement. This is the following result:
+Beautiful, right?
 
-.....
+I've also trained a model on some Skatteetaten job advertisement, and this was the result:
 
+> Skatteetaten til enhver tid er er en av Norges behov for det.
+> Dersom du onsker a reservere deg fra oppforing pa offentlig sokerliste ma dette begrunnes. 
+> Du vil bli varslet om reservasjon ikke tas til folg
 
+#### Further readings
 Here are some literature if you would like to learn more:
 - [Char RNN repo](https://github.com/spro/char-rnn.pytorch)
 - [RNN - illustrated guide to GRU and LSTM](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)
@@ -130,7 +136,7 @@ _NB! You may want to hit **refresh** frequently in each of the following steps_
 3. Expand **azureml-logs** and wait for **70_driver_log.txt** to show and click it when it does. In this log-file you watch all the outputs from the  training-script and verify that everything ran successfully.
 
 #### Hints :bulb:
-- Look for **3** todos.
+- Look for **4** todos.
 - Check out the documentation for [Experiments](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py).
 - Learn more about [Estimators](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) in the documentation.
 
@@ -153,9 +159,9 @@ To verify that your model was successfully uploaded, navigate to the **Models** 
 ## Test trained model
 Now that you have trained and uploaded your model, it's time to test it and see how well it works. You can do this using the `5_generate.py` script. The only thing you'll need to do is to download the model you registered earlier using the `Model` class and `download` method.
 
-Fill in the todo in `5_generate.py` and run it:
+Fill in the todo in `5_generate.py` and run it. Remember to specify your modelname:
 ```sh
-python3 5_generate.py
+python3 5_generate.py --modelname <your-model-name>
 ```
 
 The script will output a predicted string based of the input-sequence, which is defaulted to the character `A`. The prediction string would probably not make any sense since we have only being training the model for 500 epochs. The important thing is that it predicts something, and feel free to play around with the input arguments for the script. Have a look at what flag you can sett and tune to get a more interesting/funny result.

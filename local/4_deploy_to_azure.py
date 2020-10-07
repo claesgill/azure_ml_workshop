@@ -12,7 +12,8 @@ estimator = Estimator(
     source_directory="./model",
     entry_script="train_char_rnn.py",
     script_params={
-        "--dataset": "", # TODO: Specify the same dataset_name you provided earlier 
+        "--dataset": "",   # TODO: Specify the same dataset_name you provided earlier 
+        "--modelname": "", # TODO: Specify your modelname
         "--n_epochs": 500
         },
     compute_target="", # TODO: Specify your compute target

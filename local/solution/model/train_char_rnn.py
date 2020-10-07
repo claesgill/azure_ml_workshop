@@ -18,6 +18,7 @@ ws = run.experiment.workspace
 # Parse command line arguments
 argparser = argparse.ArgumentParser()
 argparser.add_argument('--dataset',       type=str, default='shakespeare.txt')
+argparser.add_argument('--modelname',     type=str, default='char_rnn_model')
 argparser.add_argument('--model',         type=str, default='gru')
 argparser.add_argument('--n_epochs',      type=int, default=10)
 argparser.add_argument('--print_every',   type=int, default=100)
@@ -103,12 +104,12 @@ for epoch in tqdm(range(1, args.n_epochs + 1)):
         print(generate(decoder, 'Wh', 100, cuda=args.cuda), '\n')
 
 # Saving model to outputs/ in Azure ML
-save_filename = "outputs/char_rnn_model.pt"
+save_filename = "outputs/" + args.modelname + ".pt"
 torch.save(decoder.state_dict(), save_filename)
 
 # TODO: Use the Model class and the register method to upload the model to Azure ML
 model = Model.register(workspace=ws,
-                       model_name="char_rnn_model",
+                       model_name=args.modelname,
                        model_path="outputs/")
 
 # Complete the run

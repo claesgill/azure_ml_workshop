@@ -12,8 +12,9 @@ estimator = Estimator(
     source_directory="./model",
     entry_script="train_char_rnn.py",
     script_params={
-        "--dataset": "shakespeare",  # TODO: Specify the same dataset_name you provided earlier 
-        "--n_epochs": 500
+        "--dataset": "skatteetaten",         # TODO: Specify the same dataset_name you provided earlier 
+        "--modelname": "skatteetaten_model", # TODO: Specify your modelname
+        "--n_epochs": 2000
         },
     compute_target="az-workshop-ci", # TODO: Specify your compute target
     pip_packages=[
@@ -31,6 +32,6 @@ estimator = Estimator(
 # TODO: Create a "Experiment" and use the submit method to submit the "estimator" object
 # Recieve the return object of the submittet experiment and use the "wait_for_completion(show_output=True)" method.
 # This will show you the logs for the submitted experiment
-experiment = Experiment(workspace=ws, name="my-experiment")
+experiment = Experiment(workspace=ws, name="demo-skatteetaten-dataset")
 run = experiment.submit(config=estimator)
 run.wait_for_completion(show_output=True)
