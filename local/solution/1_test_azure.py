@@ -1,11 +1,12 @@
-# external imports
 import azureml.core
 from azureml.core import Workspace
 from azureml.core import ComputeTarget, Datastore, Dataset
 
 
-# Load the workspace
+# Loading the workspace
 ws = Workspace.get(name="wp-claes-ml") # TODO: Fill inn your workspace name
+
+# Print Azure ML SDK version and workspace name
 print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSION, ws.name))
 
 # Prints all the available compute targets

@@ -6,6 +6,8 @@ from azureml.core import Workspace, Model
 # local
 from model.src.src import generate, CharRNN
 
+
+# Loading the workspace
 ws = Workspace.from_config()
 
 # Parse command line arguments
@@ -21,6 +23,7 @@ all_characters = string.printable
 n_characters = len(all_characters)
 
 # TODO: Use the Model class to download your trained model
+
 
 
 # Loading the model and reconstructs the model

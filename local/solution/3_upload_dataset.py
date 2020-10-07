@@ -1,4 +1,3 @@
-# external imports
 import azureml.core
 from azureml.core import Workspace, ComputeTarget, Datastore, Dataset
 
@@ -6,6 +5,7 @@ from azureml.core import Workspace, ComputeTarget, Datastore, Dataset
 # TODO: Load the workspace using the from_config method
 ws = Workspace.from_config()
 
+# Print Azure ML SDK version and workspace name
 print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSION, ws.name))
 
 # TODO: Fill in your dataset name and the dataset description.
@@ -13,7 +13,7 @@ print("Ready to use Azure ML '{}' to work with '{}'.".format(azureml.core.VERSIO
 dataset_name       = "shakespeare"
 dataset_desciption = "This is a dataset filled with Shakespeare"
 
-
+# Check if dataset already exist in the workspace
 if dataset_name not in ws.datasets.keys():    
     print("Uploading '{}' ...".format(dataset_name))
     try:

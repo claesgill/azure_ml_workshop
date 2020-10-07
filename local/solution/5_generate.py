@@ -1,13 +1,13 @@
 import os
-import sys
 import argparse
 import string
 import torch
 from azureml.core import Workspace, Model
 # local
-sys.path.append(".")
 from model.src.src import generate, CharRNN
 
+
+# Loading the workspace
 ws = Workspace.from_config()
 
 # Parse command line arguments
