@@ -8,3 +8,4 @@ local/.azureml
 local/.config/
 local/outputs/
 local/solution/.azureml
+local/solution/model/src/__pycache__/

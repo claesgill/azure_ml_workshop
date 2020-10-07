@@ -6,11 +6,21 @@ The main goal is to learn about Azure ML and the Azure ML SDK, but if would like
 > :warning: It's important that you go trough the [Requirements](#requirements) section to be able to do any of the tasks.
 
 ## Char RNN
-The machinelearning that is used in this workshop is the Char RNN model, and is taken from [this reposetory](https://github.com/spro/char-rnn.pytorch). It is a multi-layer [Recurrent Neural Network (RNN)]() that uses the [GRU]() gating mechanism which is quite similar to the [LSTM](). 
+The machinelearning that is used in this workshop is the Char RNN model, and is taken from [this reposetory](https://github.com/spro/char-rnn.pytorch). It is a multi-layer *Recurrent Neural Network (RNN)* that uses the *GRU* gating mechanism which is quite similar to the *LSTM*. Both GRU and LSTM is a solution to short-term-memory which means that it uses it's internal gates to learn what data that is important given the context. Learning this way makes the model able to do predictions since it sort of learns the context of what being fed into it. In our char rnn we predict characters given a sequence, but you could also make it predict full words in a sentence. 
 
-Takes in a sequence of characters and trying to predict the next character in the sequence...
+As input, this model receives a sequence of characters where it tries to predict the next character in the given sequence, based of what data is has seen before. For training we use the `shakespeare.txt` dataset in the data folder so we expect the model to learn most in that context. So if we try to predict a sequence of range 100 character given a input sequence of `You` it might spit out something like this:
 
-TODO
+.....
+
+Which is quite funny. I've also trained a model on some Skatteetaten job advertisement. This is the following result:
+
+.....
+
+
+Here are some literature if you would like to learn more:
+- [Char RNN repo](https://github.com/spro/char-rnn.pytorch)
+- [RNN - illustrated guide to GRU and LSTM](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)
+
 
 ## Contents
 1. [Requirements](#requirements)
