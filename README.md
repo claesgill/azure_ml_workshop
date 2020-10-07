@@ -27,7 +27,7 @@ It's important to note that this is a workshop that's not fully tested, meaning 
 
 A second note is that you have limited time completing the workshop and you might not be able to complete it in time, and that's ok. If you want to continue at home you can register a student account with free credits at [https://azure.microsoft.com/en-us/free/students/](https://azure.microsoft.com/en-us/free/students/).
 
-Have fun and please ask questions if something is unclear or you need help! We'll be happy to help!
+Have fun and please ask questions if something is unclear or you need help! We'll be happy to guide you!
 
 ## Getting started
 1. Login to the [Azure Portal](https://portal.azure.com/)
