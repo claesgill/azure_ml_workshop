@@ -6,6 +6,7 @@ To get started, follow the [Contents](#contents) chronologically and complete ea
 > :information_source: If you want to take a longer break or you are finished with the workshop remember to visit the [Clean up](#clean-up-coffee) section.
 
 ## Contents
+0. [Before you start](#before-you-start)
 1. [Getting started](#getting_started)
 2. [Compute instance](#compute-instance)  
     1. [Create a compute instance](#create-a-compute-instance)
@@ -18,8 +19,15 @@ To get started, follow the [Contents](#contents) chronologically and complete ea
     2. [Creating a pipeline](#creating-a-pipeline)
 6. [Train from local machine](#train-from-local-machine)
 7. [Clean up](#clean-up-coffee)
-9. [Issues](#issues)
-8. [Disclaimer](#disclaimer)
+8. [Issues](#issues)
+9. [Disclaimer](#disclaimer)
+
+## Before you start
+It's important to note that this is a workshop that's not fully tested, meaning it will contain minor bugs and probably a few typos in the READMEs.
+
+A second note is that you have limited time completing the workshop and you might not be able to complete it in time, and that's ok. If you want to continue at home you can register a student account with free credits at [https://azure.microsoft.com/en-us/free/students/](https://azure.microsoft.com/en-us/free/students/).
+
+Have fun and please ask questions if something is unclear or you need help! We'll be happy to help!
 
 ## Getting started
 1. Login to the [Azure Portal](https://portal.azure.com/)
