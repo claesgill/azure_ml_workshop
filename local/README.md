@@ -18,8 +18,8 @@ Beautiful, right?
 
 I've also trained a model on some Skatteetaten job advertisement, and this was the result:
 
-> Skatteetaten til enhver tid er er en av Norges behov for det.
-> Dersom du onsker a reservere deg fra oppforing pa offentlig sokerliste ma dette begrunnes. 
+> Skatteetaten til enhver tid er er en av Norges behov for det.  
+> Dersom du onsker a reservere deg fra oppforing pa offentlig sokerliste ma dette begrunnes.  
 > Du vil bli varslet om reservasjon ikke tas til folg
 
 #### Further readings
