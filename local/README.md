@@ -10,8 +10,8 @@ The machinelearning algorithm that is used in this workshop is the Char RNN mode
 
 As input, the trained model receives a sequence of characters where it tries to predict the next character in the given sequence, based of what data is has seen before. For training we use the `shakespeare.txt` dataset, from the data folder, so we expect the model to learn sequences in that context. So if we try to predict a sequence of range 100 character given a input sequence of `Hi` it might generate something like this:
 
-> His hundgry father's dead deed,
-> To breathes then you, for spit them banishment yourself
+> His hundgry father's dead deed,  
+> To breathes then you, for spit them banishment yourself  
 > From me? What
 
 Beautiful, right?
