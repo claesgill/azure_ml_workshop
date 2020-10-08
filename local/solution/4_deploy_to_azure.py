@@ -12,8 +12,8 @@ estimator = Estimator(
     source_directory="./model",
     entry_script="train_char_rnn.py",
     script_params={
-        "--dataset": "skatteetaten",         # TODO: Specify the same dataset_name you provided earlier 
-        "--modelname": "skatteetaten_model", # TODO: Specify your modelname
+        "--dataset": "shakespeare",         # TODO: Specify the same dataset_name you provided earlier 
+        "--modelname": "shakespeare_model", # TODO: Specify your modelname
         "--n_epochs": 2000
         },
     compute_target="az-workshop-ci", # TODO: Specify your compute target
